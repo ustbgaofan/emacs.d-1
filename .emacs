@@ -89,8 +89,8 @@
             (ruby-electric-mode t)))
 
 ;;; Rails-mode
-;; (add-to-list 'load-path "~/.emacs.d/emacs-rails/")
-;; (require 'rails)
+(add-to-list 'load-path "~/.emacs.d/emacs-rails/")
+(require 'rails)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
