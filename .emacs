@@ -1,7 +1,7 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrSPAMluanma(remove SPAM)@gmail.com>
 ;;; Created in 2005
-;;; Time-stamp: <luanma 07/30/2009 16:42:40>
+;;; Time-stamp: <luanma 08/17/2009 10:43:52>
 
 ;; I use Gentoo sometimes.
 ;; (load "/usr/share/emacs/site-lisp/site-gentoo")
@@ -661,12 +661,19 @@
   ;; Since we killed it, don't let caller do that.
   nil)
 
+;; ASP mode
 (autoload 'asp-mode "asp-mode")
 (setq auto-mode-alist
       (cons '("\\.asp\\'" . asp-mode) auto-mode-alist))
 
+;; HAML & SASS mode
 (require 'haml-mode)
 (require 'sass-mode)
+
+;; PHP mode
+(require 'php-mode)
+(add-to-list 'auto-mode-alist
+             '("\\.php[345]?\\'\\|\\.phtml\\'" . php-mode))
 
 ;; YAML mode
 (require 'yaml-mode)
