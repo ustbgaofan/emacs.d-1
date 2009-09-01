@@ -1,7 +1,7 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrSPAMluanma(remove SPAM)@gmail.com>
 ;;; Created in 2005
-;;; Time-stamp: <luanma 08/28/2009 15:41:04>
+;;; Time-stamp: <luanma 08/31/2009 19:18:13>
 
 ;; I use Gentoo sometimes.
 ;; (load "/usr/share/emacs/site-lisp/site-gentoo")
@@ -683,4 +683,6 @@
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-   (cons '("\\.text" . markdown-mode) auto-mode-alist))
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist
+   (cons '("\\.txt" . markdown-mode) auto-mode-alist))
