@@ -1,7 +1,7 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrSPAMluanma(remove SPAM)@gmail.com>
 ;;; Created in 2005
-;;; Time-stamp: <luanma 09/02/2009 15:22:14>
+;;; Time-stamp: <luanma 09/02/2009 15:32:55>
 
 ;; I use Gentoo sometimes.
 ;; (load "/usr/share/emacs/site-lisp/site-gentoo")
@@ -202,6 +202,7 @@
 (push '("\\.m$" . objc-mode) auto-mode-alist)
 
 ;; reST file
+(autoload 'rst-mode "rst-mode" "A major mode for reST file." t)
 (setq auto-mode-alist
       (append '(("\\.rst$" . rst-mode)
                 ("\\.rest$" . rst-mode)) auto-mode-alist))
