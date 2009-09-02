@@ -1,7 +1,7 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrSPAMluanma(remove SPAM)@gmail.com>
 ;;; Created in 2005
-;;; Time-stamp: <luanma 08/31/2009 19:18:13>
+;;; Time-stamp: <luanma 09/02/2009 15:22:14>
 
 ;; I use Gentoo sometimes.
 ;; (load "/usr/share/emacs/site-lisp/site-gentoo")
@@ -216,13 +216,13 @@
 
 ;; build.xml
 (define-auto-insert
-  '("^build\\.xml\\'" . "Ant build script")
+  '("build\\.xml$" . "Ant build script")
   '(nil
     ""))
 
 ;; Text file
 (define-auto-insert
-  '("\\.txt\\|\\README\\'" . "Text file")
+  '("\\.txt\\|README$" . "Text file")
   '(nil
     "File: " (file-name-nondirectory buffer-file-name)
     "  -*- Encoding: utf-8 -*-\n"
@@ -230,7 +230,7 @@
 
 ;; reST file
 (define-auto-insert
-  '("\\.rst\\|\\.rest\\'" . "reST file")
+  '("\\.rst\\|\\.rest$" . "reST file")
   '(nil
     ".. -*- Mode: rst -*- \n"
     "    File: " (file-name-nondirectory buffer-file-name)
@@ -239,7 +239,7 @@
 
 ;; C/C++/Java source file
 (define-auto-insert
-  '("\\.c\\|\\.cpp\\|\\.cc\\|\\.java\\'" . "C/C++/Java source file")
+  '("\\.c\\|\\.cpp\\|\\.cc\\|\\.java$" . "C/C++/Java source file")
   '(nil
     "/*\n"
     "  File: " (file-name-nondirectory buffer-file-name)
@@ -262,7 +262,7 @@
 
 ;; Lisp source file
 (define-auto-insert
-  '("\\.lisp\\'" . "Lisp source file")
+  '("\\.lisp$\\|\\.cl$" . "Lisp source file")
   '(nil
     ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Lisp -*-\n"
     ";;; Time-stamp: <>\n;;;\n"
@@ -272,7 +272,7 @@
 
 ;; ASDF file
 (define-auto-insert
-  '("\\.asd\\'" . "ASDF file")
+  '("\\.asd$" . "ASDF file")
   '(nil
     ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Lisp -*-\n"
     ";;; Time-stamp: <>\n;;;\n"
@@ -283,7 +283,7 @@
 ;; Scheme source file
 (setq auto-mode-alist (cons '("\\.ss$" . scheme-mode) auto-mode-alist))
 (define-auto-insert
-  '("\\.scm\\|\\.ss\\'" . "Scheme source file")
+  '("\\.scm\\|\\.ss$" . "Scheme source file")
   '(nil
     ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Scheme -*-\n"
     ";;; Time-stamp: <>\n;;;\n"
@@ -293,7 +293,7 @@
 
 ;; Makefile
 (define-auto-insert
-  '("[Mm]akefile*\\'" . "Makefile")
+  '("[Mm]akefile*$" . "Makefile")
   '(nil
     "# File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Makefile -*-\n"
     "# Time-stamp: <>\n#\n"
@@ -303,7 +303,7 @@
 
 ;; Perl
 (define-auto-insert
-  '("\\.pl\\'" . "Perl Program")
+  '("\\.pl$" . "Perl Program")
   '(nil
     "#! /usr/bin/perl -w\n# -*- Encoding: utf-8 -*-\n"
     "# File: " (file-name-nondirectory buffer-file-name) "\n"
@@ -317,7 +317,7 @@
 
 ;; Erlang source file
 (define-auto-insert
-  '("\\.erl\\'" . "Erlang source file")
+  '("\\.erl$" . "Erlang source file")
   '(nil
     "%%% File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: erlang -*-\n"
     "%%% Time-stamp: <>\n%%%\n"
@@ -327,7 +327,7 @@
 
 ;; Erlang header file
 (define-auto-insert
-  '("\\.hrl\\'" . "Erlang header file")
+  '("\\.hrl$" . "Erlang header file")
   '(nil
     "%%% File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: erlang -*-\n"
     "%%% Time-stamp: <>\n%%%\n"
@@ -337,7 +337,7 @@
 
 ;; Python
 (define-auto-insert
-  '("\\.py\\'" . "Python Program")
+  '("\\.py$" . "Python Program")
   '(nil
     "# File: " (file-name-nondirectory buffer-file-name) " -*- Encoding: utf-8 -*-\n"
     "# Time-stamp: <>\n#\n"
@@ -350,7 +350,7 @@
 
 ;; Ruby
 (define-auto-insert
-  '("\\.rb\\'" . "Ruby Program")
+  '("\\.rb$" . "Ruby Program")
   '(nil
     "# File: " (file-name-nondirectory buffer-file-name)  " -*- Encoding: utf-8 -*-\n"
     "# Time-stamp: <>\n#\n"
@@ -363,7 +363,7 @@
 
 ;; Io source file
 (define-auto-insert
-  '("\\.io\\'" . "Io source file")
+  '("\\.io$" . "Io source file")
   '(nil
     "// File: " (file-name-nondirectory buffer-file-name) "\n"
     "// Time-stamp: <>\n//\n"
@@ -373,7 +373,7 @@
 
 ;; Lua source file
 (define-auto-insert
-  '("\\.lua\\'" . "Lua source file")
+  '("\\.lua$" . "Lua source file")
   '(nil
     "-- File: " (file-name-nondirectory buffer-file-name) "\n"
     "-- Time-stamp: <>\n--\n"
@@ -383,7 +383,7 @@
 
 ;; Hakell source file
 (define-auto-insert
-  '("\\.hs\\'" . "Haskell source file")
+  '("\\.hs$" . "Haskell source file")
   '(nil
     "-- File: " (file-name-nondirectory buffer-file-name) "\n"
     "-- Time-stamp: <>\n--\n"
@@ -393,7 +393,7 @@
 
 ;; Ocaml source file
 (define-auto-insert
-  '("\\.ml\\'" . "Ocaml source file")
+  '("\\.ml$" . "Ocaml source file")
   '(nil
     "(*\n"
     "  File: " (file-name-nondirectory buffer-file-name)
@@ -402,6 +402,16 @@
     auto-insert-copyright "\n\n"
     "  Description:\n" _ "\n"
     "*)"))
+
+;; Clojure source file
+(define-auto-insert
+  '("\\.clj$" . "Clojure source file")
+  '(nil
+    ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Clojure -*-\n"
+    ";;; Time-stamp: <>\n;;;\n"
+    ";;; Copyright: " (substring (current-time-string) -4) " (C) "
+    auto-insert-copyright "\n;;;\n"
+    ";;; Description:\n;;; " _ "\n"))
 
 ;; Setting proper hooks for c/c++-mode
 
@@ -664,7 +674,7 @@
 ;; ASP mode
 (autoload 'asp-mode "asp-mode")
 (setq auto-mode-alist
-      (cons '("\\.asp\\'" . asp-mode) auto-mode-alist))
+      (cons '("\\.asp$" . asp-mode) auto-mode-alist))
 
 ;; HAML & SASS mode
 (require 'haml-mode)
@@ -673,7 +683,7 @@
 ;; PHP mode
 (require 'php-mode)
 (add-to-list 'auto-mode-alist
-             '("\\.php[345]?\\'\\|\\.phtml\\'" . php-mode))
+             '("\\.php[345]?$\\|\\.phtml$\\|\\.inc$\\|\\.module$" . php-mode))
 
 ;; YAML mode
 (require 'yaml-mode)
@@ -683,6 +693,11 @@
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-   (cons '("\\.md" . markdown-mode) auto-mode-alist))
+   (cons '("\\.md$" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist
-   (cons '("\\.txt" . markdown-mode) auto-mode-alist))
+   (cons '("\\.txt$" . markdown-mode) auto-mode-alist))
+
+;; Clojure mode
+(add-to-list 'load-path "~/.emacs.d/clojure-mode")
+(autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
+(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
