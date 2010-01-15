@@ -1,7 +1,7 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
-;;; .emacs for luanma <mrSPAMluanma(remove SPAM)@gmail.com>
+;;; .emacs for luanma <mrluanma#gmail#com>
 ;;; Created in 2005
-;;; Time-stamp: <luanma 09/02/2009 15:32:55>
+;;; Time-stamp: <luanma 01/15/2010 10:03:04>
 
 ;; I use Gentoo sometimes.
 ;; (load "/usr/share/emacs/site-lisp/site-gentoo")
@@ -113,7 +113,7 @@
 
 ;; Diary & appt
 (setq diary-file "~/.emacs.d/diary")
-(setq diary-mail-addr "mrSPAMluanma(remove SPAM)@gmail.com")
+(setq diary-mail-addr "mrluanma#gmail#com")
 (add-hook 'diary-hook 'appt-make-list)
 (setq appt-issue-message t)
 
@@ -132,7 +132,7 @@
 
 ;;; Email stuff.
 (setq user-full-name "mrSPAMluanma(remove SPAM)")
-(setq user-mail-address "mrSPAMluanma(remove SPAM)@gmail.com")
+(setq user-mail-address "mrluanma#gmail#com")
 
 ;; Basic VM setup
 ;; (add-to-list 'load-path "~/.emacs.d/vm/")
@@ -151,7 +151,7 @@
 
 ;; Configure inbound mail (POP)
 ;; (setq vm-spool-files
-;;       '(("~/INBOX" "pop-ssl:pop.gmail.com:995:pass:mrSPAMluanma(remove SPAM)@gmail.com:*" "~/INBOX.CRASH")))
+;;       '(("~/INBOX" "pop-ssl:pop.gmail.com:995:pass:mrluanma#gmail#com:*" "~/INBOX.CRASH")))
 
 ;; Use W3M to read HTML email
 ;; (require 'w3m-load)
@@ -172,7 +172,7 @@
 ;;       smtpmail-smtp-service 587
 ;;       smtpmail-auth-credentials '(("smtp.gmail.com"
 ;;                                 587
-;;                                 "mrSPAMluanma(remove SPAM)@gmail.com" nil)))
+;;                                 "mrluanma#gmail#com" nil)))
 
 ;; so we use ssmtp to send it.
 ;; (setq send-mail-function 'feedmail-send-it)
