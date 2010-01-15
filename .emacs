@@ -1,7 +1,7 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
 ;;; Created in 2005
-;;; Time-stamp: <luanma 01/15/2010 10:03:04>
+;;; Time-stamp: <luanma 01/15/2010 10:13:10>
 
 ;; I use Gentoo sometimes.
 ;; (load "/usr/share/emacs/site-lisp/site-gentoo")
@@ -87,10 +87,6 @@
           (lambda()
             (require 'ruby-electric)
             (ruby-electric-mode t)))
-
-;;; Rails-mode
-(add-to-list 'load-path "~/.emacs.d/emacs-rails/")
-(require 'rails)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
