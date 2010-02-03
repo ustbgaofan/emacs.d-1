@@ -1,10 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Created in 2005
-;;; Time-stamp: <luanma 02/03/2010 17:59:34>
-
-;; I use Gentoo sometimes.
-;; (load "/usr/share/emacs/site-lisp/site-gentoo")
+;;; Time-stamp: <luanma 02/03/2010 21:51:20>
 
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'minor-modes)
@@ -65,11 +61,6 @@
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'erlang-start)
 
-;; Enable Io-mode
-(add-to-list 'load-path "~/.emacs.d/io-mode/")
-(require 'io-mode)
-(push '("\\.io$" . io-mode) auto-mode-alist)
-
 ;; Enable Lua-mode
 (add-to-list 'load-path "~/.emacs.d/lua-mode/")
 (setq auto-mode-alist (cons '("\\.lua$" . lua-mode) auto-mode-alist))
@@ -120,81 +111,6 @@
 
 (transient-mark-mode t)
 
-;; Use emacs-w3m to browe WWW world.
-;; Just to prove me a hard-core Emacs user.
-;; (add-to-list 'load-path "~/.emacs.d/w3m/")
-;; (require 'w3m-load)
-;; (require 'mime-w3m)
-
-;;; Email stuff.
-(setq user-full-name "mrSPAMluanma(remove SPAM)")
-(setq user-mail-address "mrluanma#gmail#com")
-
-;; Basic VM setup
-;; (add-to-list 'load-path "~/.emacs.d/vm/")
-;; (autoload 'vm "vm" "Start VM on your primary inbox." t)
-;; (autoload 'vm-other-frame "vm" "Like `vm' but starts in another frame." t)
-;; (autoload 'vm-visit-folder "vm" "Start VM on an arbitrary folder." t)
-;; (autoload 'vm-visit-virtual-folder "vm" "Visit a VM virtual folder." t)
-;; (autoload 'vm-mode "vm" "Run VM major mode on a buffer" t)
-;; (autoload 'vm-mail "vm" "Send a mail message using VM." t)
-;; (autoload 'vm-submit-bug-report "vm" "Send a bug report about VM." t)
-;; (setq vm-toolbar-pixmap-directory (concat (expand-file-name "~") "/bin/emacs/site-lisp/vm/pixmaps"))
-;; (setq vm-image-directory (concat (expand-file-name "~") "/bin/emacs/site-lisp/vm/pixmaps"))
-;; (setenv "PATH" (concat (concat (expand-file-name "~") "/bin/emacs/site-lisp/vm/bin") ":" (getenv "PATH")))
-;; (setq send-mail-function 'sendmail-send-it)
-(setq mail-archive-file-name "~/Mail/SENT")
-
-;; Configure inbound mail (POP)
-;; (setq vm-spool-files
-;;       '(("~/INBOX" "pop-ssl:pop.gmail.com:995:pass:mrluanma#gmail#com:*" "~/INBOX.CRASH")))
-
-;; Use W3M to read HTML email
-;; (require 'w3m-load)
-;; (setq vm-mime-use-w3-for-text/html nil)
-;; (setq vm-url-browser 'w3m)
-;; (load "vm-w3m")
-;; (setq w3m-input-coding-system 'utf-8
-;;       w3m-output-coding-system 'utf-8)
-
-;; Configure outbound mail (SMTP)
-;; (smtpmail didn't work for me.)
-
-;; (setq smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-;;       smtpmail-smtp-server "smtp.gmail.com"
-;;       smtpmail-default-smtp-server "smtp.gmail.com"
-;;       send-mail-function 'smtpmail-send-it
-;;       message-send-mail-function 'smtpmail-send-it
-;;       smtpmail-smtp-service 587
-;;       smtpmail-auth-credentials '(("smtp.gmail.com"
-;;                                 587
-;;                                 "mrluanma#gmail#com" nil)))
-
-;; so we use ssmtp to send it.
-;; (setq send-mail-function 'feedmail-send-it)
-
-;; (setq feedmail-buffer-eating-function
-;;       'feedmail-buffer-to-ssmtp)
-
-;; (setq feedmail-ssmtp-template
-;;       "sendmail -t")
-
-;; (defun feedmail-buffer-to-ssmtp (prepped errors-to addr-listoid)
-;;   "Function which actually calls ssmtp as a subprocess.
-;; Feeds the buffer to it.
-;; derived from feedmail-buffer-to-binmail"
-;;   (set-buffer prepped)
-;;   (apply
-;;    'call-process-region
-;;    (append (list (point-min) (point-max)
-;;               "/bin/sh" nil errors-to nil "-c"
-;;               (format feedmail-ssmtp-template)))))
-
-;; Oh, the simplicity
-;; (set-default-font "-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-1")
-;; -adobe-courier-medium-r-normal--20-140-100-100-m-110-iso10646-1
-;; -misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-1
-
 (push '("\\.m$" . objc-mode) auto-mode-alist)
 
 ;; reST file
@@ -211,225 +127,182 @@
 (setq auto-insert-copyright
       (format "%s <%s>" (user-full-name) user-mail-address))
 
-;; build.xml
-(define-auto-insert
-  '("build\\.xml$" . "Ant build script")
-  '(nil
-    ""))
-
 ;; Text file
 (define-auto-insert
-  '("\\.txt\\|README$" . "Text file")
-  '(nil
-    "File: " (file-name-nondirectory buffer-file-name)
-    "  -*- Encoding: utf-8 -*-\n"
-    "Time-stamp: <>\n\n"))
+    '("\\.txt\\|README$" . "Text file")
+    '(nil
+      "File: " (file-name-nondirectory buffer-file-name)
+      "  -*- Encoding: utf-8 -*-\n"
+      "Time-stamp: <>\n\n"))
 
 ;; reST file
 (define-auto-insert
-  '("\\.rst\\|\\.rest$" . "reST file")
-  '(nil
-    ".. -*- Mode: rst -*- \n"
-    "    File: " (file-name-nondirectory buffer-file-name)
-    "  -*- Encoding: utf-8 -*-\n"
-    "    Time-stamp: <>\n\n"))
+    '("\\.rst\\|\\.rest$" . "reST file")
+    '(nil
+      ".. -*- Mode: rst -*- \n"
+      "    File: " (file-name-nondirectory buffer-file-name)
+      "  -*- Encoding: utf-8 -*-\n"
+      "    Time-stamp: <>\n\n"))
 
 ;; C/C++/Java source file
 (define-auto-insert
-  '("\\.c\\|\\.cpp\\|\\.cc\\|\\.java$" . "C/C++/Java source file")
-  '(nil
-    "/*\n"
-    "  File: " (file-name-nondirectory buffer-file-name)
-    "  Time-stamp: <>\n\n"
-    "  Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n\n"
-    "  Description:\n" _ "\n"
-    "*/"))
+    '("\\.c\\|\\.cpp\\|\\.cc\\|\\.java$" . "C/C++/Java source file")
+    '(nil
+      "/*\n"
+      "  File: " (file-name-nondirectory buffer-file-name)
+      "  Time-stamp: <>\n\n"
+      "  Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n\n"
+      "  Description:\n" _ "\n"
+      "*/"))
 
 ;; Objective-C source file
 (define-auto-insert
-  '("\\.m$" . "Objective-C source file")
-  '(nil
-    "//\n"
-    "// File: " (file-name-nondirectory buffer-file-name)
-    " Time-stamp: <>\n//\n"
-    "// Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n//\n"
-    "// Description:\n// " _ "\n"))
+    '("\\.m$" . "Objective-C source file")
+    '(nil
+      "//\n"
+      "// File: " (file-name-nondirectory buffer-file-name)
+      " Time-stamp: <>\n//\n"
+      "// Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n//\n"
+      "// Description:\n// " _ "\n"))
 
 ;; Lisp source file
 (define-auto-insert
-  '("\\.lisp$\\|\\.cl$" . "Lisp source file")
-  '(nil
-    ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Lisp -*-\n"
-    ";;; Time-stamp: <>\n;;;\n"
-    ";;; Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n;;;\n"
-    ";;; Description:\n;;; " _ "\n"))
+    '("\\.lisp$\\|\\.cl$" . "Lisp source file")
+    '(nil
+      ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Lisp -*-\n"
+      ";;; Time-stamp: <>\n;;;\n"
+      ";;; Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n;;;\n"
+      ";;; Description:\n;;; " _ "\n"))
 
 ;; ASDF file
 (define-auto-insert
-  '("\\.asd$" . "ASDF file")
-  '(nil
-    ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Lisp -*-\n"
-    ";;; Time-stamp: <>\n;;;\n"
-    ";;; Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n;;;\n"
-    ";;; Description:\n;;; " _ "\n"))
+    '("\\.asd$" . "ASDF file")
+    '(nil
+      ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Lisp -*-\n"
+      ";;; Time-stamp: <>\n;;;\n"
+      ";;; Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n;;;\n"
+      ";;; Description:\n;;; " _ "\n"))
 
 ;; Scheme source file
 (setq auto-mode-alist (cons '("\\.ss$" . scheme-mode) auto-mode-alist))
 (define-auto-insert
-  '("\\.scm\\|\\.ss$" . "Scheme source file")
-  '(nil
-    ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Scheme -*-\n"
-    ";;; Time-stamp: <>\n;;;\n"
-    ";;; Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n;;;\n"
-    ";;; Description:\n;;; " _ "\n"))
+    '("\\.scm\\|\\.ss$" . "Scheme source file")
+    '(nil
+      ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Scheme -*-\n"
+      ";;; Time-stamp: <>\n;;;\n"
+      ";;; Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n;;;\n"
+      ";;; Description:\n;;; " _ "\n"))
 
 ;; Makefile
 (define-auto-insert
-  '("[Mm]akefile*$" . "Makefile")
-  '(nil
-    "# File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Makefile -*-\n"
-    "# Time-stamp: <>\n#\n"
-    "# Copyright: "  (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n#\n"
-    "# Description:\n# Makefile for " _ "\n"))
+    '("[Mm]akefile*$" . "Makefile")
+    '(nil
+      "# File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Makefile -*-\n"
+      "# Time-stamp: <>\n#\n"
+      "# Copyright: "  (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n#\n"
+      "# Description:\n# Makefile for " _ "\n"))
 
 ;; Perl
 (define-auto-insert
-  '("\\.pl$" . "Perl Program")
-  '(nil
-    "#! /usr/bin/perl -w\n# -*- Encoding: utf-8 -*-\n"
-    "# File: " (file-name-nondirectory buffer-file-name) "\n"
-    "# Time-stamp: <>\n#\n"
-    "# Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n#\n"
-    (progn (save-buffer)
+    '("\\.pl$" . "Perl Program")
+    '(nil
+      "#! /usr/bin/perl -w\n# -*- Encoding: utf-8 -*-\n"
+      "# File: " (file-name-nondirectory buffer-file-name) "\n"
+      "# Time-stamp: <>\n#\n"
+      "# Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n#\n"
+      (progn (save-buffer)
 ;;;            (shell-command (format "chmod +x %s" (buffer-file-name)))
-           "")
-    "# Description:\n# " _ "\n"))
+             "")
+      "# Description:\n# " _ "\n"))
 
 ;; Erlang source file
 (define-auto-insert
-  '("\\.erl$" . "Erlang source file")
-  '(nil
-    "%%% File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: erlang -*-\n"
-    "%%% Time-stamp: <>\n%%%\n"
-    "%%% Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n%%%\n"
-    "%%% Description:\n%%% " _ "\n"))
+    '("\\.erl$" . "Erlang source file")
+    '(nil
+      "%%% File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: erlang -*-\n"
+      "%%% Time-stamp: <>\n%%%\n"
+      "%%% Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n%%%\n"
+      "%%% Description:\n%%% " _ "\n"))
 
 ;; Erlang header file
 (define-auto-insert
-  '("\\.hrl$" . "Erlang header file")
-  '(nil
-    "%%% File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: erlang -*-\n"
-    "%%% Time-stamp: <>\n%%%\n"
-    "%%% Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n%%%\n"
-    "%%% Description:\n%%% " _ "\n"))
+    '("\\.hrl$" . "Erlang header file")
+    '(nil
+      "%%% File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: erlang -*-\n"
+      "%%% Time-stamp: <>\n%%%\n"
+      "%%% Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n%%%\n"
+      "%%% Description:\n%%% " _ "\n"))
 
 ;; Python
 (define-auto-insert
-  '("\\.py$" . "Python Program")
-  '(nil
-    "# File: " (file-name-nondirectory buffer-file-name) " -*- Encoding: utf-8 -*-\n"
-    "# Time-stamp: <>\n#\n"
-    "# Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n#\n"
-    (progn (save-buffer)
-;;;            (shell-command (format "chmod +x %s" (buffer-file-name)))
-           "")
-    "# Description:\n# " _ "\n"))
+    '("\\.py$" . "Python Program")
+    '(nil
+      "# File: " (file-name-nondirectory buffer-file-name) " -*- Encoding: utf-8 -*-\n"
+      "# Time-stamp: <>\n#\n"
+      "# Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n#\n"
+      "# Description:\n# " _ "\n"))
 
 ;; Ruby
 (define-auto-insert
-  '("\\.rb$" . "Ruby Program")
-  '(nil
-    "# File: " (file-name-nondirectory buffer-file-name)  " -*- Encoding: utf-8 -*-\n"
-    "# Time-stamp: <>\n#\n"
-    "# Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n#\n"
-    (progn (save-buffer)
-;;;            (shell-command (format "chmod +x %s" (buffer-file-name)))
-           "")
-    "# Description:\n# " _ "\n"))
-
-;; Io source file
-(define-auto-insert
-  '("\\.io$" . "Io source file")
-  '(nil
-    "// File: " (file-name-nondirectory buffer-file-name) "\n"
-    "// Time-stamp: <>\n//\n"
-    "// Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n//\n"
-    "// Description:\n// " _ "\n"))
+    '("\\.rb$" . "Ruby Program")
+    '(nil
+      "# File: " (file-name-nondirectory buffer-file-name)  " -*- Encoding: utf-8 -*-\n"
+      "# Time-stamp: <>\n#\n"
+      "# Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n#\n"
+      "# Description:\n# " _ "\n"))
 
 ;; Lua source file
 (define-auto-insert
-  '("\\.lua$" . "Lua source file")
-  '(nil
-    "-- File: " (file-name-nondirectory buffer-file-name) "\n"
-    "-- Time-stamp: <>\n--\n"
-    "-- Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n--\n"
-    "-- Description:\n-- " _ "\n"))
+    '("\\.lua$" . "Lua source file")
+    '(nil
+      "-- File: " (file-name-nondirectory buffer-file-name) "\n"
+      "-- Time-stamp: <>\n--\n"
+      "-- Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n--\n"
+      "-- Description:\n-- " _ "\n"))
 
 ;; Hakell source file
 (define-auto-insert
-  '("\\.hs$" . "Haskell source file")
-  '(nil
-    "-- File: " (file-name-nondirectory buffer-file-name) "\n"
-    "-- Time-stamp: <>\n--\n"
-    "-- Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n--\n"
-    "-- Description:\n-- " _ "\n"))
+    '("\\.hs$" . "Haskell source file")
+    '(nil
+      "-- File: " (file-name-nondirectory buffer-file-name) "\n"
+      "-- Time-stamp: <>\n--\n"
+      "-- Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n--\n"
+      "-- Description:\n-- " _ "\n"))
 
 ;; Ocaml source file
 (define-auto-insert
-  '("\\.ml$" . "Ocaml source file")
-  '(nil
-    "(*\n"
-    "  File: " (file-name-nondirectory buffer-file-name)
-    "  Time-stamp: <>\n\n"
-    "  Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n\n"
-    "  Description:\n" _ "\n"
-    "*)"))
+    '("\\.ml$" . "Ocaml source file")
+    '(nil
+      "(*\n"
+      "  File: " (file-name-nondirectory buffer-file-name)
+      "  Time-stamp: <>\n\n"
+      "  Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n\n"
+      "  Description:\n" _ "\n"
+      "*)"))
 
 ;; Clojure source file
 (define-auto-insert
-  '("\\.clj$" . "Clojure source file")
-  '(nil
-    ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Clojure -*-\n"
-    ";;; Time-stamp: <>\n;;;\n"
-    ";;; Copyright: " (substring (current-time-string) -4) " (C) "
-    auto-insert-copyright "\n;;;\n"
-    ";;; Description:\n;;; " _ "\n"))
-
-;; Setting proper hooks for c/c++-mode
-
-;; I seldom need M-c (capitalize word) in C/C++
-;; If you use many hooks, use command add-hook instead.
-;; (require 'c-comment-edit)
-
-;; (setq c++-mode-hook  'c++-my-hook)
-;; (defun c++-my-hook ()
-;;   (local-set-key "\M-c" 'c-comment-edit))
-
-;; (setq c-mode-hook  'c-my-hook)
-;; (defun c-my-hook ()
-;;   (local-set-key "\M-c" 'c-comment-edit))
-
-;; (setq c-coment-edit-after-hook 'untabify-buffer)
-;; (defun untabify-buffer ()
-;;   "C-comment-edit cleanup."
-;;     ;;  To preserve indentation. Remember that C-comment markers are
-;;     ;;  added to the beginning
-;;     (untabify (point-min) (point-max)))
+    '("\\.clj$" . "Clojure source file")
+    '(nil
+      ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Clojure -*-\n"
+      ";;; Time-stamp: <>\n;;;\n"
+      ";;; Copyright: " (substring (current-time-string) -4) " (C) "
+      auto-insert-copyright "\n;;;\n"
+      ";;; Description:\n;;; " _ "\n"))
 
 ;; No annoying backup files
 (setq make-backup-files nil
@@ -458,25 +331,10 @@
 (line-number-mode t)
 (column-number-mode t)
 
-;; Line number
-;; (require 'wb-line-number)
-;; (wb-line-number-toggle)
-
 ;; (add-to-list 'load-path "~/lisp/slime-2.0/")
 ;; (setq inferior-lisp-program "sbcl --noinform")       ; your Lisp system
 ;; (require 'slime)
 ;; (slime-setup)
-
-;; Common Lisp indentation.
-(autoload 'common-lisp-indent-function "cl-indent")
-(setq lisp-indent-function 'common-lisp-indent-function)
-
-;; (if window-system
-;;     (autoload 'keisen-mode "keisen-mouse" "MULE table" t)
-;;     (autoload 'keisen-mode "keisen-mule" "MULE table" t))
-
-;; Pbook
-;; (require 'pbook)
 
 ;; Session
 (add-to-list 'load-path "~/.emacs.d/session/lisp/")
@@ -485,20 +343,20 @@
 (desktop-save-mode t)
 (add-hook 'kill-emacs-hook '(lambda () (desktop-save "~/")))
 
-;; I'm writing to Li Sen.
+;; I love short lines.
 (let ((save-fill-column fill-column))
-  (defun write-to-lisen ()
+  (defun short-lines ()
     "Change the fill-column value to 50."
     (interactive)
     (setq save-fill-column fill-column
           fill-column 50)
     (auto-fill-mode t))
-  (defun write-to-lisen-stop ()
+  (defun short-lines-stop ()
     "Restor the fill-column value."
     (interactive)
     (setq fill-column save-fill-column)))
 
-(add-hook 'text-mode-hook 'write-to-lisen)
+(add-hook 'text-mode-hook 'short-lines)
 
 ;; I love comment, but I have my style.
 (defun kill-cpp-comment ()
@@ -553,15 +411,11 @@
          (string (aref fortune-strings n)))
     (if (interactive-p)
         (message (format "%s" string))
-      string)))
+        string)))
 
 ;; Override standard startup message
 (defun startup-echo-area-message ()
   (fortune))
-
-;; tpp-mode
-(autoload 'tpp-mode "tpp-mode" "TPP mode." t)
-(add-to-list 'auto-mode-alist '("\\.tpp$" . tpp-mode))
 
 ;;; move current line up or down
 (global-set-key [(meta up)] 'move-line-up)
@@ -689,11 +543,11 @@
 
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode.el"
-   "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-   (cons '("\\.md$" . markdown-mode) auto-mode-alist))
+      (cons '("\\.md$" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist
-   (cons '("\\.txt$" . markdown-mode) auto-mode-alist))
+      (cons '("\\.txt$" . markdown-mode) auto-mode-alist))
 
 ;; Clojure mode
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
