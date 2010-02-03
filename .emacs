@@ -1,7 +1,7 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
 ;;; Created in 2005
-;;; Time-stamp: <luanma 01/15/2010 10:13:10>
+;;; Time-stamp: <luanma 02/03/2010 16:53:02>
 
 ;; I use Gentoo sometimes.
 ;; (load "/usr/share/emacs/site-lisp/site-gentoo")
@@ -520,8 +520,9 @@
   (untabify (point-min) (point-max)))
 
 ;;; Emacs fortune
-(defvar fortune-file "~/.emacs.d/fortune.txt"
-  "The file that fortunes come from.")
+(require 'find-lisp)
+(defvar fortune-files (find-lisp-find-files "~/.emacs.d/fortune/" "\\.ft$")
+  "The files that fortunes come from.")
 
 (defvar fortune-strings nil
   "The fortunes in the fortune file.")
@@ -546,7 +547,7 @@
     ;; seed the random sequence generator
     (random t)
     ;; read fortune string from file
-    (open-fortune-file fortune-file)
+    (open-fortune-file (nth (random (length fortune-files)) fortune-files))
     (kill-buffer (current-buffer)))
   (let* ((n (random (length fortune-strings)))
          (string (aref fortune-strings n)))
