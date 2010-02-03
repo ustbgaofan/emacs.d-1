@@ -1,8 +1,8 @@
 ;;; ellets.el --- My Emacs Lisp snippets
 
-;; Copyright (C) 2008  mrSPAMluanma(remove SPAM)
+;; Copyright (C) 2008 Xiaohong Zhao
 
-;; Author: Xiaohong Zhao <mrSPAMluanma(remove SPAM)@gmail.com>
+;; Author: Xiaohong Zhao <mrluanma#gmail#com>
 ;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -24,32 +24,27 @@
 
 ;;; Code:
 
-(eval-when-compile (require 'cl))
 (require 'font-lock)
 
-(defun type-watch-post-command-function ()
-  ""
-  (case this-command
-    (self-insert-command
-     (when (find (char-to-string (aref (buffer-substring (- (point) 1) (point)) 0))
-                 '("。" "，" "；")
-                 :test #'string=)
-       (message "Watch out!  You just typed a watched character.")))))
+;;; suspicious-char-mode
+(defvar suspicious-chars '("。" "，" "；"))
+(defvar suspicious-char-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map [remap self-insert-command] 'self-insert-suspicious-char)
+    map))
+
+(defun self-insert-suspicious-char (arg)
+  (interactive "p")
+  (when (member (char-to-string last-command-event) suspicious-chars)
+    (insert "Watch out!  You just typed a suspicious charactor."))
+  (self-insert-command arg))
 
 ;;;###autoload
-(define-minor-mode type-watch-mode
-    "Toggle type-watch minor mode.
-With prefix arg, turn type watch  mode on if arg is positive.
+(define-minor-mode suspicious-char-mode
+    "Toggle suspicious char minor mode.
+With prefix arg, turn suspicious char mode on if arg is positive.
 "
-  :lighter " Type-Watch"
-  (if type-watch-mode
-      (progn
-        (add-hook 'post-command-hook 'type-watch-post-command-function t nil)
-        ;; font-lock-lize the characters as a warning
-        (font-lock-add-keywords
-         nil
-         '(("\\([。，；]\\)" 1 font-lock-warning-face t))))
-      (remove-hook 'post-command-hook 'type-watch-post-command-function)))
+  :lighter " Suspicious-Char")
 
 ;;; caps-lock-mode
 (defvar caps-lock-mode-map
@@ -63,7 +58,7 @@ With prefix arg, turn type watch  mode on if arg is positive.
 
 (defun self-insert-upcased (arg)
   (interactive "p")
-  (setq last-command-char (upcase last-command-char))
+  (setq last-command-event (upcase last-command-event))
   (self-insert-command arg))
 
 ;;; neaten C or C++ file
