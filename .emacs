@@ -1,13 +1,13 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
 ;;; Created in 2005
-;;; Time-stamp: <luanma 02/03/2010 16:53:02>
+;;; Time-stamp: <luanma 02/03/2010 17:59:34>
 
 ;; I use Gentoo sometimes.
 ;; (load "/usr/share/emacs/site-lisp/site-gentoo")
 
 (add-to-list 'load-path "~/.emacs.d/")
-(require 'ellets)
+(require 'minor-modes)
 
 (defun user-full-name ()
   "Xiaohong Zhao")
