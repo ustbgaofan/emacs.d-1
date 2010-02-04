@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 02/04/2010 09:14:00>
+;;; Time-stamp: <luanma 02/04/2010 10:56:09>
 
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'minor-modes)
@@ -557,3 +557,9 @@
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
 (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
+
+;; yasnippet
+(add-to-list 'load-path "~/.emacs.d/yasnippet")
+(require 'yasnippet)
+(setq yas/root-directory "~/.emacs.d/yasnippet/snippets")
+(yas/load-directory yas/root-directory)
