@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 02/03/2010 21:51:20>
+;;; Time-stamp: <luanma 02/04/2010 09:14:00>
 
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'minor-modes)
@@ -80,18 +80,22 @@
             (ruby-electric-mode t)))
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
- '(global-font-lock-mode t nil (font-lock)))
+ '(column-number-mode t)
+ '(display-time-mode t)
+ '(global-font-lock-mode t nil (font-lock))
+ '(show-paren-mode t)
+ '(transient-mark-mode (quote (only . t))))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "outline" :family "Courier New")))))
 
 ;; Todo
 (setq todo-file-do "~/.emacs.d/do")
@@ -322,9 +326,9 @@
 (setq time-stamp-format "%:u %02m/%02d/%04y %02H:%02M:%02S")
 
 ;; No tool-bar & menu-bar & scroll-bar
-(tool-bar-mode nil)
-(menu-bar-mode nil)
-(scroll-bar-mode nil)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 (setq scroll-bar-mode nil)
 
 ;; Show line number and column
