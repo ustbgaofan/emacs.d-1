@@ -1,11 +1,11 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luannma 02/08/2010 21:30:01>
+;;; Time-stamp: <luanma 02/08/2010 21:33:03>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
 (defun user-login-name ()
-  "luannma")
+  "luanma")
 
 (defun user-full-name ()
   "Xiaohong Zhao")
@@ -29,10 +29,6 @@
                           (list (cons 'width  (frame-width))
                                 (cons 'height (frame-height))))))
           nil)
-
-;; (setq initial-frame-alist
-;;       `((left . 0) (top . 0)
-;;        (width . 108) (height . 42)))
 
 ;;; Some shortcuts
 (global-set-key [(f2)] 'todo-show)
