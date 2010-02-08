@@ -1,15 +1,17 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luannma 02/08/2010 21:23:10>
+;;; Time-stamp: <luannma 02/08/2010 21:30:01>
 
-(add-to-list 'load-path "~/.emacs.d/")
-(require 'minor-modes)
+(setq user-mail-address "mrluanma#gmail#com")
 
 (defun user-login-name ()
   "luannma")
 
 (defun user-full-name ()
   "Xiaohong Zhao")
+
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'minor-modes)
 
 ;; More color
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
