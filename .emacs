@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 02/23/2010 16:42:57>
+;;; Time-stamp: <luanma 02/23/2010 17:16:21>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -134,7 +134,7 @@
 
 ;; Text file
 (define-auto-insert
-    '("\\.txt\\|README$" . "Text file")
+    '("\\.txt$\\|README$" . "Text file")
     '(nil
       "File: " (file-name-nondirectory buffer-file-name)
       "  -*- Encoding: utf-8 -*-\n"
@@ -142,7 +142,7 @@
 
 ;; reST file
 (define-auto-insert
-    '("\\.rst\\|\\.rest$" . "reST file")
+    '("\\.rst$\\|\\.rest$" . "reST file")
     '(nil
       ".. -*- Mode: rst -*- \n"
       "    File: " (file-name-nondirectory buffer-file-name)
@@ -151,7 +151,7 @@
 
 ;; C/C++/Java source file
 (define-auto-insert
-    '("\\.c\\|\\.cpp\\|\\.cc\\|\\.java$" . "C/C++/Java source file")
+    '("\\.c$\\|\\.cpp$\\|\\.cc$\\|\\.java$" . "C/C++/Java source file")
     '(nil
       "/*\n"
       "  File: " (file-name-nondirectory buffer-file-name)
@@ -195,7 +195,7 @@
 ;; Scheme source file
 (setq auto-mode-alist (cons '("\\.ss$" . scheme-mode) auto-mode-alist))
 (define-auto-insert
-    '("\\.scm\\|\\.ss$" . "Scheme source file")
+    '("\\.scm$\\|\\.ss$" . "Scheme source file")
     '(nil
       ";;; File: " (file-name-nondirectory buffer-file-name) "    -*- Mode: Scheme -*-\n"
       ";;; Time-stamp: <>\n;;;\n"
@@ -535,11 +535,9 @@
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-      (cons '("\\.md$" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("\\.mkd$" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("\\.txt$" . markdown-mode) auto-mode-alist))
+      (append '(("\\.md$" . markdown-mode)
+		("\\.mkd$" . markdown-mode)
+		("\\.txt$" . markdown-mode) auto-mode-alist)))
 
 ;; Clojure mode
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
@@ -551,3 +549,14 @@
 (require 'yasnippet)
 (setq yas/root-directory "~/.emacs.d/yasnippet/snippets")
 (yas/load-directory yas/root-directory)
+
+;; jekyll
+(require 'jekyll)
+(global-set-key (kbd "C-c b n") 'jekyll-draft-post)
+(global-set-key (kbd "C-c b P") 'jekyll-publish-post)
+(global-set-key (kbd "C-c b p") (lambda () 
+                                  (interactive)
+                                  (find-file "~/Sources/blog/_posts/")))
+(global-set-key (kbd "C-c b d") (lambda () 
+                                  (interactive)
+                                  (find-file "~/Sources/blog/_drafts/")))
