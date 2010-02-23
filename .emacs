@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 02/08/2010 21:33:03>
+;;; Time-stamp: <luanma 02/23/2010 16:42:57>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -348,21 +348,6 @@
 (desktop-save-mode t)
 (add-hook 'kill-emacs-hook '(lambda () (desktop-save "~/")))
 
-;; I love short lines.
-(let ((save-fill-column fill-column))
-  (defun short-lines ()
-    "Change the fill-column value to 50."
-    (interactive)
-    (setq save-fill-column fill-column
-          fill-column 50)
-    (auto-fill-mode t))
-  (defun short-lines-stop ()
-    "Restor the fill-column value."
-    (interactive)
-    (setq fill-column save-fill-column)))
-
-(add-hook 'text-mode-hook 'short-lines)
-
 ;; I love comment, but I have my style.
 (defun kill-cpp-comment ()
   "Kill all the cpp style comment from current buffer."
@@ -551,6 +536,8 @@
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
       (cons '("\\.md$" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\.mkd$" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist
       (cons '("\\.txt$" . markdown-mode) auto-mode-alist))
 
