@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 02/23/2010 17:16:21>
+;;; Time-stamp: <luanma 02/24/2010 11:27:37>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -120,9 +120,8 @@
 
 ;; reST file
 (autoload 'rst-mode "rst-mode" "A major mode for reST file." t)
-(setq auto-mode-alist
-      (append '(("\\.rst$" . rst-mode)
-                ("\\.rest$" . rst-mode)) auto-mode-alist))
+(add-to-list 'auto-mode-alist
+             '("\\.rst$\\|\\.rest$" . rst-mode))
 
 ;;; Auto-insert
 (setq auto-insert t)
@@ -534,10 +533,8 @@
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (append '(("\\.md$" . markdown-mode)
-		("\\.mkd$" . markdown-mode)
-		("\\.txt$" . markdown-mode) auto-mode-alist)))
+(add-to-list 'auto-mode-alist
+             '("\\.md$\\|\\.mkd$\\|\\.txt$\\|\\.markdown$" . markdown-mode))
 
 ;; Clojure mode
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
