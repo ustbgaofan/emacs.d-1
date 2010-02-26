@@ -1343,7 +1343,7 @@ Position %d/%d; %d translated, %d fuzzy, %d untranslated, %d obsolete")
             (progn
               ;; There is at least one entry.
               (goto-char (match-beginning 0))
-              (previous-line 1)
+              (forward-line -1)
               (setq end-of-header (match-end 0))
               (if (looking-at "msgid \"\"\n")
                   ;; There is indeed a PO file header.
