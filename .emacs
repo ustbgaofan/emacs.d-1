@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 02/24/2010 11:27:37>
+;;; Time-stamp: <luanma 02/26/2010 15:47:40>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -557,3 +557,10 @@
 (global-set-key (kbd "C-c b d") (lambda () 
                                   (interactive)
                                   (find-file "~/Sources/blog/_drafts/")))
+
+;; po-mode
+(add-to-list 'load-path "~/.emacs.d/po-mode")
+(autoload 'po-mode "po-mode"
+  "Major mode for translators to edit PO files" t)
+(setq auto-mode-alist (cons '("\\.po\\'\\|\\.po\\." . po-mode)
+                            auto-mode-alist))
