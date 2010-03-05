@@ -1,3 +1,4 @@
+-*- Encoding: utf-8 -*-
 We will perhaps eventually be writing only small modules which are identified
 by name as they are used to build larger ones, so that devices like
 indentation, rather than delimiters, might become feasible for expressing local
@@ -1335,7 +1336,7 @@ Trussardi's wild new fragrance.
 In arts, compromises yield mediocre results. The personality and vision of the
 artist has to go through. I like to see Python as a piece of art. I just hope
 the artist will not get too tainted by usability studies.
-      -- François Pinard, 22 May 2000
+      -- FranÃ§ois Pinard, 22 May 2000
 %
 In fact, I've never seen an argument about which I cared less. I'm completely
 case insensitivity insensitive.
@@ -1638,7 +1639,7 @@ them as Appendix A."
 That is one of the first goals. Also, we want to handle a C++ SAX stream with
 Python, and vice versa (feed a Python SAX stream into Xalan). Bi-SAXuality, in
 a sense. :)
-      -- Jürgen Hermann, 11 Apr 2001
+      -- JÃ¼rgen Hermann, 11 Apr 2001
 %
 As you seem totally unwilling or unable to understand that _Weltanschauung_ to
 any extent, I don't see how you could bring Python any constructive enhancement
@@ -1875,7 +1876,7 @@ Syntax should not look like grit on my monitor.
 %
 Can this not be resolved by carefully adjusting the order of finalization? If
 code can be bootstrapped it can be strootbapped.
-      -- Kristján Jónsson, 30 Jun 2006
+      -- KristjÃ¡n JÃ³nsson, 30 Jun 2006
 %
 Python resembles Lisp like an octopus eye resembles a mammalian eye: they have
 lots in common because they're both pretty good solutions to similar problems.
