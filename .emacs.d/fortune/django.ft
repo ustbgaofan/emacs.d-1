@@ -1,4 +1,3 @@
--*- Encoding: utf-8 -*-
 Loose coupling
 --------------
 A fundamental goal of Django's stack is `loose coupling and tight cohesion`_.

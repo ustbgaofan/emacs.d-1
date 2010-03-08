@@ -1,4 +1,3 @@
--*- Encoding: utf-8 -*-
 We will perhaps eventually be writing only small modules which are identified
 by name as they are used to build larger ones, so that devices like
 indentation, rather than delimiters, might become feasible for expressing local
