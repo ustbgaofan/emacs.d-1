@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 03/19/2010 17:49:55>
+;;; Time-stamp: <luanma 03/20/2010 09:41:37>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -564,9 +564,3 @@
   "Major mode for translators to edit PO files" t)
 (setq auto-mode-alist (cons '("\\.po\\'\\|\\.po\\." . po-mode)
                             auto-mode-alist))
-
-;; pep8 & pylint
-(autoload 'python-pep8 "python-pep8")
-(autoload 'pep8 "python-pep8")
-(autoload 'python-pylint "python-pylint")
-(autoload 'pylint "python-pylint")
