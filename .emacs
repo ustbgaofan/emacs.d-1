@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 03/20/2010 09:41:37>
+;;; Time-stamp: <luanma 05/14/2010 11:03:57>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -56,22 +56,29 @@
          (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
                                 '(2 "_NET_WM_STATE_FULLSCREEN" 0)))))
 
-;; Enable Erlang-mode.
+;; haskell-mode
+(load "~/.emacs.d/haskell-mode-2.7.0/haskell-site-file.el")
+(push '("\\.hs$" . haskell-mode) auto-mode-alist)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+;; erlang-mode
 (add-to-list 'load-path "~/.emacs.d/erlang-mode/")
 (setq erlang-root-dir "/usr/local/lib/erlang/")
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'erlang-start)
 
-;; Enable Lua-mode
+;; lua-mode
 (add-to-list 'load-path "~/.emacs.d/lua-mode/")
 (setq auto-mode-alist (cons '("\\.lua$" . lua-mode) auto-mode-alist))
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 
-;; Enable Javascript-mode
+;; js2-mode
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-;; Ruby
+;; ruby-mode
 (add-to-list 'load-path "~/.emacs.d/ruby-mode/")
 (push '("\\.rb$" . ruby-mode) auto-mode-alist)
 (autoload 'ruby-mode "ruby-mode" "Ruby editing mode." t)
