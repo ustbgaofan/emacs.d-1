@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 05/14/2010 11:03:57>
+;;; Time-stamp: <luanma 05/14/2010 11:20:11>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -58,7 +58,7 @@
 
 ;; haskell-mode
 (load "~/.emacs.d/haskell-mode-2.7.0/haskell-site-file.el")
-(push '("\\.hs$" . haskell-mode) auto-mode-alist)
+(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -71,7 +71,7 @@
 
 ;; lua-mode
 (add-to-list 'load-path "~/.emacs.d/lua-mode/")
-(setq auto-mode-alist (cons '("\\.lua$" . lua-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 
 ;; js2-mode
@@ -80,7 +80,7 @@
 
 ;; ruby-mode
 (add-to-list 'load-path "~/.emacs.d/ruby-mode/")
-(push '("\\.rb$" . ruby-mode) auto-mode-alist)
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (autoload 'ruby-mode "ruby-mode" "Ruby editing mode." t)
 (add-hook 'ruby-mode-hook
           (lambda()
@@ -123,12 +123,11 @@
 
 (transient-mark-mode t)
 
-(push '("\\.m$" . objc-mode) auto-mode-alist)
+(add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
 
 ;; reST file
 (autoload 'rst-mode "rst-mode" "A major mode for reST file." t)
-(add-to-list 'auto-mode-alist
-             '("\\.rst$\\|\\.rest$" . rst-mode))
+(add-to-list 'auto-mode-alist '("\\.rst$\\|\\.rest$" . rst-mode))
 
 ;;; Auto-insert
 (setq auto-insert t)
@@ -199,7 +198,7 @@
       ";;; Description:\n;;; " _ "\n"))
 
 ;; Scheme source file
-(setq auto-mode-alist (cons '("\\.ss$" . scheme-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.ss$" . scheme-mode))
 (define-auto-insert
     '("\\.scm$\\|\\.ss$" . "Scheme source file")
     '(nil
@@ -519,31 +518,30 @@
   ;; Since we killed it, don't let caller do that.
   nil)
 
-;; ASP mode
+;; asp-mode
 (autoload 'asp-mode "asp-mode")
-(setq auto-mode-alist
-      (cons '("\\.asp$" . asp-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.asp$" . asp-mode))
 
-;; HAML & SASS mode
+;; haml-mode & sass-mode
 (require 'haml-mode)
 (require 'sass-mode)
 
-;; PHP mode
+;; php-mode
 (require 'php-mode)
 (add-to-list 'auto-mode-alist
              '("\\.php[345]?$\\|\\.phtml$\\|\\.inc$\\|\\.module$" . php-mode))
 
-;; YAML mode
+;; yaml-mode
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
-;; Markdown mode
+;; markddown-mode
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist
              '("\\.md$\\|\\.mkd$\\|\\.txt$\\|\\.markdown$" . markdown-mode))
 
-;; Clojure mode
+;; clojure-mode
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
 (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
@@ -569,5 +567,4 @@
 (add-to-list 'load-path "~/.emacs.d/po-mode")
 (autoload 'po-mode "po-mode"
   "Major mode for translators to edit PO files" t)
-(setq auto-mode-alist (cons '("\\.po\\'\\|\\.po\\." . po-mode)
-                            auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.po\\'\\|\\.po\\." . po-mode))
