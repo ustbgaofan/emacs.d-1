@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 05/14/2010 11:20:11>
+;;; Time-stamp: <luanma 08/05/2010 17:19:32>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -18,6 +18,9 @@
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-clarity)
+
+;; Remove trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Maximize-frame
 (require 'maxframe)
