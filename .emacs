@@ -1,6 +1,6 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
 ;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 08/05/2010 17:19:32>
+;;; Time-stamp: <luanma 04/29/2011 12:15:15>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -129,7 +129,7 @@
 (add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
 
 ;; reST file
-(autoload 'rst-mode "rst-mode" "A major mode for reST file." t)
+(autoload 'rst-mode "rst" "A major mode for reST file." t)
 (add-to-list 'auto-mode-alist '("\\.rst$\\|\\.rest$" . rst-mode))
 
 ;;; Auto-insert
@@ -559,10 +559,10 @@
 (require 'jekyll)
 (global-set-key (kbd "C-c b n") 'jekyll-draft-post)
 (global-set-key (kbd "C-c b P") 'jekyll-publish-post)
-(global-set-key (kbd "C-c b p") (lambda () 
+(global-set-key (kbd "C-c b p") (lambda ()
                                   (interactive)
                                   (find-file "~/Sources/blog/_posts/")))
-(global-set-key (kbd "C-c b d") (lambda () 
+(global-set-key (kbd "C-c b d") (lambda ()
                                   (interactive)
                                   (find-file "~/Sources/blog/_drafts/")))
 
