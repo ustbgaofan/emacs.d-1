@@ -1,0 +1,18 @@
+[user]
+	name = Zhao Xiaohong
+	email = mrluanma#gmail#com
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+[alias]
+        st = status
+        rb = svn rebase
+        ci = commit -a
+        co = checkout
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 700x550+420+36
+	history-view-vpane-position = 181
+	main-window-view = HistoryView
+	file-view-vpane-position = 368
