@@ -1,3 +1,6 @@
 [submodule ".emacs.d/clojure-mode"]
 	path = .emacs.d/clojure-mode
 	url = git://github.com/jochu/clojure-mode.git
+[submodule ".emacs.d/gist"]
+	path = .emacs.d/gist
+	url = git://github.com/defunkt/gist.el.git

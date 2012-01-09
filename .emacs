@@ -1,6 +1,4 @@
 ;;;  -*- Mode: emacs-lisp; Encoding: utf-8 -*-
-;;; .emacs for luanma <mrluanma#gmail#com>
-;;; Time-stamp: <luanma 04/29/2011 12:19:33>
 
 (setq user-mail-address "mrluanma#gmail#com")
 
@@ -401,3 +399,9 @@
 (autoload 'po-mode "po-mode"
   "Major mode for translators to edit PO files" t)
 (add-to-list 'auto-mode-alist '("\\.po\\'\\|\\.po\\." . po-mode))
+
+;; Gist
+(add-to-list 'load-path "~/.emacs.d/gist")
+(require 'gist)
+(setq github-user "xxxxxxxx")
+(setq github-token "xxxxxxxx4f672520ac6aa8744xxxxxx")
